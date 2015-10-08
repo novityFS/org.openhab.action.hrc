@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <versions.openhab>1.7.0</versions.openhab>
+	</properties>
+
+	<groupId>org.openhab.action</groupId>
+	<artifactId>org.openhab.action.hrc</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+
+	<name>openHAB HVAC room controller action</name>
+
+    <description>This is the HVAC room controller action of the open Home Automation Bus (openHAB)</description>
+
+	<packaging>jar</packaging>
+
+	<build>
+        <pluginManagement>
+            <plugins>
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <archive>
+                        <manifestFile>src/main/resources/META-INF/MANIFEST.MF</manifestFile>
+                    </archive>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>unpack-dependencies</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/classes</outputDirectory>
+                            <excludeScope>provided</excludeScope>
+                            <includeScope>runtime</includeScope>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.openhab.core</groupId>
+                <artifactId>org.openhab.core</artifactId>
+                <version>${versions.openhab}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.openhab.core</groupId>
+                <artifactId>org.openhab.core.library</artifactId>
+                <version>${versions.openhab}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.openhab.core</groupId>
+                <artifactId>org.openhab.core.scriptengine</artifactId>
+                <version>${versions.openhab}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.osgi</groupId>
+                <artifactId>org.osgi.core</artifactId>
+                <version>6.0.0</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>1.7.2</version>
+                <scope>provided</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+	<dependencies>
+		<dependency>
+			<groupId>de.novity.openhab.program.weekly</groupId>
+			<artifactId>openhab-weekly-program</artifactId>
+			<version>0.1.0-SNAPSHOT</version>
+		</dependency>
+
+        <dependency>
+            <groupId>org.openhab.core</groupId>
+            <artifactId>org.openhab.core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.openhab.core</groupId>
+            <artifactId>org.openhab.core.library</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.openhab.core</groupId>
+            <artifactId>org.openhab.core.scriptengine</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+	</dependencies>
+
+    <repositories>
+        <repository>
+            <id>openhab.repository.snapshot</id>
+            <name>openHAB 1.x Snapshots</name>
+            <url>https://dl.bintray.com/openhab/mvn</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+    </repositories>
+</project>
