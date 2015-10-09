@@ -1,37 +1,31 @@
 package org.openhab.action.hrc.internal;
 
 import de.novity.openhab.hvac.api.RoomControllerRepository;
-import de.novity.openhab.hvac.api.TimeProgramRepository;
-import de.novity.openhab.hvac.domain.HVACRoomController;
-import de.novity.openhab.hvac.domain.TimeProgram;
+import de.novity.openhab.hvac.domain.HVACRoomControllerGroup;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class RoomControllerRepositryDefaultImplemenation implements RoomControllerRepository {
-    private final Map<String, HVACRoomController> roomControllerMap;
+    private final Map<String, HVACRoomControllerGroup> roomControllerMap;
 
     public RoomControllerRepositryDefaultImplemenation() {
-        this.roomControllerMap = new HashMap<String, HVACRoomController>();
+        this.roomControllerMap = new HashMap<String, HVACRoomControllerGroup>();
     }
 
-    public HVACRoomController findById(String id) {
-        return roomControllerMap.get(id);
-    }
-
-    public void addRoomController(HVACRoomController roomController) {
-        if (roomController == null) {
-            throw new NullPointerException("Room controller must not be null");
+    public HVACRoomControllerGroup findByName(String roomControllerGroupName) {
+        if ((roomControllerGroupName == null) || (roomControllerGroupName.isEmpty())) {
+            throw new IllegalArgumentException("Room controller group name must not be null or empty");
         }
 
-        roomControllerMap.put(roomController.getName(), roomController);
+        return roomControllerMap.get(roomControllerGroupName);
     }
 
-    public void updateRoomController(HVACRoomController roomController) {
-        if (roomController == null) {
-            throw new NullPointerException("Room controller must not be null");
+    public void addRoomControllerGroup(HVACRoomControllerGroup roomControllerGroup) {
+        if (roomControllerGroup == null) {
+            throw new NullPointerException("Room controller group must not be null");
         }
 
-        roomControllerMap.put(roomController.getName(), roomController);
+        roomControllerMap.put(roomControllerGroup.getName(), roomControllerGroup);
     }
 }

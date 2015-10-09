@@ -9,7 +9,8 @@ Bundle-Version: 1.7.1
 Bundle-Activator: org.openhab.action.hrc.internal.HVACRoomControllerActivator
 Bundle-ManifestVersion: 2
 Bundle-Description: This is an HVAC room controller action for openhab
-Import-Package: org.openhab.core.events,
+Import-Package: de.novity.openhab.hvac.api,
+ org.openhab.core.events,
  org.openhab.core.scriptengine.action,
  org.openhab.core.items,
  org.openhab.core.library.items,

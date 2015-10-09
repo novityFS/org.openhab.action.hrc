@@ -11,8 +11,6 @@ package org.openhab.action.hrc.internal;
 import de.novity.openhab.hvac.api.RoomControllerService;
 import de.novity.openhab.hvac.api.SwitchCycleData;
 import de.novity.openhab.hvac.api.TimeProgramService;
-import de.novity.openhab.hvac.domain.HVACRoomController;
-import de.novity.openhab.hvac.domain.OperatingMode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
